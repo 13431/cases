@@ -1,6 +1,4 @@
-package com.nf.howdoyoudo.servlet;
-
-import com.nf.howdoyoudo.utils.CaptchaUtil;
+package com.nf.howdoyoudo.captcha;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -18,7 +16,7 @@ public class CaptchaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        CaptchaUtil captchaUtil = new CaptchaUtil();
+        CaptchaService captchaUtil = new CaptchaService();
 
         // 1. 得到一个随机字符串
         String randomstr = captchaUtil.getRandomString(4);

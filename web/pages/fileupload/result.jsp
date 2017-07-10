@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h2>${upload_result}</h2>
+<h2><a href="${pageContext.request.contextPath}/pages/fileupload/"> ${upload_result}</a></h2>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.nf.howdoyoudo.utils;
+package com.nf.howdoyoudo.captcha;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -7,9 +7,26 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class CaptchaUtil {
-    ThreadLocalRandom r = ThreadLocalRandom.current();
+public class CaptchaService {
+    private int width = 120, height = 50, fontSize = 32;
+    private String fontName = "Fixedsys";
 
+    private ThreadLocalRandom r = ThreadLocalRandom.current();
+
+
+    public CaptchaService() {
+    }
+
+    public CaptchaService(int width, int height, int fontSize) {
+        this.width = width;
+        this.height = height;
+        this.fontSize = fontSize;
+    }
+
+
+    /**
+     * 得到长度为 len 的随机字符串
+     */
     public String getRandomString(int len) {
         String seeds = "abcdefghijklmnopqrstuvwzyzABCDEFGHJKLMNOPQRSTUVWZYZ23456789";
 
@@ -23,10 +40,14 @@ public class CaptchaUtil {
         return sb.toString();
     }
 
-    /* 得到随机颜色 */
+
+    /**
+     *  得到随机颜色
+     */
     private Color getRandomColor() {
         return new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
     }
+
 
     /**
      * 根据字符串画验证码图片
@@ -34,7 +55,6 @@ public class CaptchaUtil {
      * @return 验证码图片
      */
     public BufferedImage getCaptchaImage(String input) {
-        int width = 130, height = 60;
 
         // 1. 创建图片对象
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -50,8 +70,8 @@ public class CaptchaUtil {
         char[] inputs = input.toCharArray();
         for (int i = 0; i < inputs.length; i++) {
             g.setColor(getRandomColor());
-            g.setFont(new Font("Georgia", Font.PLAIN, 30));
-            g.drawString(String.valueOf(inputs[i]), i*20 + 15, 33 + r.nextInt(-3, 3));
+            g.setFont(new Font(fontName, Font.PLAIN, fontSize));
+            g.drawString(String.valueOf(inputs[i]), i*20 + 15, fontSize + r.nextInt(-3, 3));
         }
 
         // 画干扰线
@@ -70,8 +90,18 @@ public class CaptchaUtil {
         return image;
     }
 
+    /**
+     * TODO: 发送短信验证码
+     * @param phoneNumber 发送给谁
+     * @param message 发送的内容
+     */
+    public void sendMessageCaptcha(String phoneNumber, String message) {
+        // 尚未实现，留作练习
+    }
+
+
     public static void main(String[] args) {
-        CaptchaUtil captchaUtil = new CaptchaUtil();
+        CaptchaService captchaUtil = new CaptchaService();
         BufferedImage im = captchaUtil.getCaptchaImage("hello");
 
         try {
@@ -80,5 +110,4 @@ public class CaptchaUtil {
             e.printStackTrace();
         }
     }
-
 }

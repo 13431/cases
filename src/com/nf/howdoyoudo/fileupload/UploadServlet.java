@@ -1,4 +1,4 @@
-package com.nf.howdoyoudo.servlet;
+package com.nf.howdoyoudo.fileupload;
 
 
 import org.apache.commons.fileupload.FileItem;
@@ -36,7 +36,7 @@ import java.util.List;
  * <code>
  *   <servlet>
  *       <servlet-name>uploadServlet</servlet-name>
- *       <servlet-class>com.nf.howdoyoudo.servlet.UploadServlet</servlet-class>
+ *       <servlet-class>com.nf.howdoyoudo.fileupload.UploadServlet</servlet-class>
  *   </servlet>
  *   <servlet-mapping>
  *       <servlet-name>uploadServlet</servlet-name>
@@ -47,6 +47,7 @@ import java.util.List;
  * 这样在客户端，只需要访问 /upload 就能访问到这个 Servlet 了。
  * 同样的，filter 和 listener 也有相应的注解，现在的 web 项目，web.xml 可以删掉不用了。
  */
+
 @WebServlet("/upload")
 @MultipartConfig  // 必需项，MultipartConfig 用来使得我们的 Servlet 支持 multipart 编码的文件上传
 public class UploadServlet extends HttpServlet {
@@ -72,15 +73,52 @@ public class UploadServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try { //异常处理
-            // 保存文件到硬盘
-            newage_advanced(req);
-            // 跳转到成功页面
-            req.setAttribute("upload_result", "恭喜您，上传成功了！");
-            req.getRequestDispatcher("/pages/fileupload/result.jsp").forward(req, resp);
-        } catch (Exception e) {
-            e.printStackTrace();
+        try {
+            newage_advanced(req);  // 调用相应方法，保存文件到硬盘
+            req.setAttribute("upload_result", "恭喜您，上传成功！");
+        } catch (Exception ex) {
+            // 如果保存失败，返回失败消息.
+            req.setAttribute("upload_result", "很抱歉，上传失败！");
         }
+
+        // 跳转到结果页面
+        req.getRequestDispatcher("pages/fileupload/result.jsp").forward(req, resp);
+    }
+
+    /**
+     * 利用 MultiplePart 3.0 內建的支持，进行文件处理
+     */
+    private void newage_advanced(HttpServletRequest request) throws Exception {
+
+        // 1. 获取
+        Part part = request.getPart("pic");
+
+        // 2. 查看 part 对象
+        System.out.printf(
+                ">> 基本情况：\nName: %s\nSize: %d\nContentType: %s\nHeaderNames: %s\ngetSubmittedFileName: %s\ndisposition: %s\n",
+                part.getName(),
+                part.getSize(),
+                part.getContentType(),
+                part.getHeaderNames(),
+                // part.getSubmittedFileName(),
+                part.getHeader("content-disposition"));
+
+        // 3. 获取文件要保存到的文件夹，这里是项目下的 upload 文件夹。
+        // 如果文件夹不存在，要先创建
+        File destdir = new File(request.getServletContext().getRealPath("upload"));
+        if (!destdir.exists()) destdir.mkdir();
+
+        // 4. 获取真实的文件名。3.1 之后有 part.getSubmittedFileName() 方法可以直接获取。
+        // 之前的版本，需要从 header 中获取，比如：
+        String realfilename = part.getHeader("content-disposition").split("filename=")[1].replace("\"", "");
+        //    String realfilename = part.getHeader("content-disposition").substring(part.getHeader("content-disposition").lastIndexOf("=") + 2, part.getHeader("content-disposition").lastIndexOf("\""));
+        //    String realfilename = part.getSubmittedFileName();
+
+        // 5. 构建最终的保存路径
+        String fullSavePath = destdir + File.separator + System.currentTimeMillis() + "-" + realfilename;
+
+        // 6. 保存之
+        part.write(fullSavePath);
     }
 
 
@@ -89,34 +127,6 @@ public class UploadServlet extends HttpServlet {
         for (Part part : request.getParts()) {
             // 逐个处理
         }
-    }
-
-
-    /* MultiplePart 3.0, Advanced */
-    private int newage_advanced(HttpServletRequest request) throws IOException, ServletException {
-        Part part = request.getPart("meinv");
-
-        System.out.printf(
-                ">> 基本情况：\nName: %s\nSize: %d\nContentType: %s\nHeaderNames: %s\ngetSubmittedFileName: %s\ndisposition: %s\n",
-                part.getName(),
-                part.getSize(),
-                part.getContentType(),
-                part.getHeaderNames(),
-                part.getSubmittedFileName(),
-                part.getHeader("content-disposition"));
-
-        String realfilename = part.getHeader("content-disposition").split("filename=")[1].replace("\"", "");
-        if (realfilename.equals(part.getSubmittedFileName())) {
-            System.out.println("恭喜你，真厉害~~~");
-        }
-
-        String realfilename2 = part.getHeader("content-disposition").substring(part.getHeader("content-disposition").lastIndexOf("=") + 2, part.getHeader("content-disposition").lastIndexOf("\""));
-        System.out.println(realfilename2 + "fileName");
-        if (realfilename2.equals(part.getSubmittedFileName())) {
-            System.out.println("恭喜你，你真棒！！！");
-        }
-
-        return 1;
     }
 
 
