@@ -10,7 +10,7 @@
     <ul>
         <li><a href="${ss}/pages/fileupload/">文件上传</a></li>
         <li><a href="${ss}/pages/captcha">验证码</a></li>
-        <li><a href="${ss}/pages/pagination">分页导航</a></li>
+        <li><a href="${ss}/paging?pageno=1">分页导航</a></li>
     </ul>
 </div>
 </body>

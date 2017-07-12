@@ -3,6 +3,8 @@ out/
 .svn/
 .gradle/
 libs/unused/
+.idea/
+*.iml
 
 # Compiled class file
 *.class
