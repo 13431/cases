@@ -2,10 +2,10 @@ package com.nf.howdoyoudo.pagination.mssql;
 
 
 /**
- * æ•°æ®åº“ä¸­å¯¹åº”çš„è¡¨ä¸ºï¼š
+ * Êı¾İ¿âÖĞ¶ÔÓ¦µÄ±íÎª£º
  * -- create table person (id int primary key, name varchar(20) not null, weixin varchar(30));
  *
- * è°ƒç”¨ {@link DBHelper#initData()} åˆå§‹åŒ–æ•°æ®
+ * µ÷ÓÃ {@link DBHelper#initData()} ³õÊ¼»¯Êı¾İ
  */
 public class Person {
 

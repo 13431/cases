@@ -25,7 +25,7 @@ public class CaptchaService {
 
 
     /**
-     * å¾—åˆ°é•¿åº¦ä¸º len çš„éšæœºå­—ç¬¦ä¸²
+     * µÃµ½³¤¶ÈÎª len µÄËæ»ú×Ö·û´®
      */
     public String getRandomString(int len) {
         String seeds = "abcdefghijklmnopqrstuvwzyzABCDEFGHJKLMNOPQRSTUVWZYZ23456789";
@@ -42,7 +42,7 @@ public class CaptchaService {
 
 
     /**
-     *  å¾—åˆ°éšæœºé¢œè‰²
+     *  µÃµ½Ëæ»úÑÕÉ«
      */
     private Color getRandomColor() {
         return new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
@@ -50,23 +50,23 @@ public class CaptchaService {
 
 
     /**
-     * æ ¹æ®å­—ç¬¦ä¸²ç”»éªŒè¯ç å›¾ç‰‡
+     * ¸ù¾İ×Ö·û´®»­ÑéÖ¤ÂëÍ¼Æ¬
      * @param input
-     * @return éªŒè¯ç å›¾ç‰‡
+     * @return ÑéÖ¤ÂëÍ¼Æ¬
      */
     public BufferedImage getCaptchaImage(String input) {
 
-        // 1. åˆ›å»ºå›¾ç‰‡å¯¹è±¡
+        // 1. ´´½¨Í¼Æ¬¶ÔÏó
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
-        // 2. å¾—åˆ°ç”»ç¬”
+        // 2. µÃµ½»­±Ê
         Graphics g = image.getGraphics();
 
-        // 3. å¡«å……èƒŒæ™¯è‰²
+        // 3. Ìî³ä±³¾°É«
         g.setColor(new Color(r.nextInt(200, 255), r.nextInt(240, 255), r.nextInt(200, 255)));
         g.fillRect(0, 0, width, height);
 
-        // 4. ç”»å­—ç¬¦ä¸²
+        // 4. »­×Ö·û´®
         char[] inputs = input.toCharArray();
         for (int i = 0; i < inputs.length; i++) {
             g.setColor(getRandomColor());
@@ -74,13 +74,13 @@ public class CaptchaService {
             g.drawString(String.valueOf(inputs[i]), i*20 + 15, fontSize + r.nextInt(-3, 3));
         }
 
-        // ç”»å¹²æ‰°çº¿
+        // »­¸ÉÈÅÏß
         for(int i = 0; i < 4; i++ ) {
             g.setColor(getRandomColor());
             g.drawLine(0, r.nextInt(width), width, r.nextInt(height));
         }
 
-        // ç”»å¹²æ‰°ç‚¹
+        // »­¸ÉÈÅµã
         for(int i = 0; i < 100; i++ ) {
             g.setColor(getRandomColor());
             g.fillOval(r.nextInt(width), r.nextInt(height), r.nextInt(5), r.nextInt(5));
@@ -91,12 +91,12 @@ public class CaptchaService {
     }
 
     /**
-     * TODO: å‘é€çŸ­ä¿¡éªŒè¯ç 
-     * @param phoneNumber å‘é€ç»™è°
-     * @param message å‘é€çš„å†…å®¹
+     * TODO: ·¢ËÍ¶ÌĞÅÑéÖ¤Âë
+     * @param phoneNumber ·¢ËÍ¸øË­
+     * @param message ·¢ËÍµÄÄÚÈİ
      */
     public void sendMessageCaptcha(String phoneNumber, String message) {
-        // å°šæœªå®ç°ï¼Œç•™ä½œç»ƒä¹ 
+        // ÉĞÎ´ÊµÏÖ£¬Áô×÷Á·Ï°
     }
 
 

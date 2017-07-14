@@ -18,17 +18,17 @@ public class CaptchaServlet extends HttpServlet {
 
         CaptchaService captchaUtil = new CaptchaService();
 
-        // 1. å¾—åˆ°ä¸€ä¸ªéšæœºå­—ç¬¦ä¸²
+        // 1. µÃµ½Ò»¸öËæ»ú×Ö·û´®
         String randomstr = captchaUtil.getRandomString(4);
-        System.out.println("å¾—åˆ°çš„éªŒè¯ç ä¸º: " + randomstr);
+        System.out.println("µÃµ½µÄÑéÖ¤ÂëÎª: " + randomstr);
 
-        // 2. å°†è¿™ä¸ªå­—ç¬¦ä¸²ä¿å­˜åˆ° Session é‡Œé¢
+        // 2. ½«Õâ¸ö×Ö·û´®±£´æµ½ Session ÀïÃæ
         req.getSession().setAttribute("_verifycode", randomstr);
 
-        // 3. ä¸ºè¿™ä¸ªå­—ç¬¦ä¸²ç”Ÿæˆä¸€ä¸ªå›¾ç‰‡
+        // 3. ÎªÕâ¸ö×Ö·û´®Éú³ÉÒ»¸öÍ¼Æ¬
         BufferedImage image = captchaUtil.getCaptchaImage(randomstr);
 
-        // 4. å°†è¿™ä¸ªå›¾ç‰‡å‘é€åˆ°å®¢æˆ·ç«¯
+        // 4. ½«Õâ¸öÍ¼Æ¬·¢ËÍµ½¿Í»§¶Ë
         ImageIO.write(image, "PNG", resp.getOutputStream());
 
     }

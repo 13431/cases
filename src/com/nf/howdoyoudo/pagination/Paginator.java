@@ -5,19 +5,19 @@ import java.util.List;
 
 
 /**
- * å°è£…åˆ†é¡µåŠŸèƒ½
+ * ·â×°·ÖÒ³¹¦ÄÜ
  *
- * ä½¿ç”¨æ–¹æ³•ï¼š
- * 1. è·å–ç”¨æˆ·å‚æ•°ï¼Œå¹¶ä½¿ç”¨è¿™äº›å‚æ•°åˆ›å»º {@link Paginator} å¯¹è±¡
- * 2. æŸ¥è¯¢æ•°æ®åº“ï¼Œå¾—åˆ°è®°å½•æ€»æ•°ï¼Œä¿å­˜åˆ° {@link Paginator} å¯¹è±¡
- * 3. æŸ¥è¯¢æ•°æ®åº“ï¼Œå¾—åˆ°åˆ†é¡µæ•°æ®ï¼Œä¿å­˜åˆ° {@link Paginator} å¯¹è±¡ã€‚å¯ä»¥é€šè¿‡ {@link Paginator#getOffset()} å¾—åˆ°æ•°æ®çš„å¼€å§‹åºå·ã€‚
- * 4. ä¿å­˜ {@link Paginator} åˆ° request æˆ– session ä¸­ï¼Œç”¨äºé¡µé¢æ¸²æŸ“ã€‚
- * 5. ä½¿ç”¨ä¿å­˜çš„ {@link Paginator} å¯¹è±¡æ¸²æŸ“é¡µé¢ï¼Œå¯ä»¥ä½¿ç”¨ {@link Paginator#outputPageNav(String, String, boolean, boolean)} ç›´æ¥è¾“å‡ºé¡µç å¯¼èˆª
+ * Ê¹ÓÃ·½·¨£º
+ * 1. »ñÈ¡ÓÃ»§²ÎÊı£¬²¢Ê¹ÓÃÕâĞ©²ÎÊı´´½¨ {@link Paginator} ¶ÔÏó
+ * 2. ²éÑ¯Êı¾İ¿â£¬µÃµ½¼ÇÂ¼×ÜÊı£¬±£´æµ½ {@link Paginator} ¶ÔÏó
+ * 3. ²éÑ¯Êı¾İ¿â£¬µÃµ½·ÖÒ³Êı¾İ£¬±£´æµ½ {@link Paginator} ¶ÔÏó¡£¿ÉÒÔÍ¨¹ı {@link Paginator#getOffset()} µÃµ½Êı¾İµÄ¿ªÊ¼ĞòºÅ¡£
+ * 4. ±£´æ {@link Paginator} µ½ request »ò session ÖĞ£¬ÓÃÓÚÒ³ÃæäÖÈ¾¡£
+ * 5. Ê¹ÓÃ±£´æµÄ {@link Paginator} ¶ÔÏóäÖÈ¾Ò³Ãæ£¬¿ÉÒÔÊ¹ÓÃ {@link Paginator#outputPageNav(String, String, boolean, boolean)} Ö±½ÓÊä³öÒ³Âëµ¼º½
  *
  * <code>
  *
  *     // in the servlet
- *     Paginator pager = new Paginator(å½“å‰é¡µ, æ¯é¡µæ˜¾ç¤ºæ•°ç›®, å¯¼èˆªæ é¡µæ•°);
+ *     Paginator pager = new Paginator(µ±Ç°Ò³, Ã¿Ò³ÏÔÊ¾ÊıÄ¿, µ¼º½À¸Ò³Êı);
  *
  *     pager.setRowCount(dao.count());
  *     pager.setData(dao.findAll(page.getOffset(), page.getSize());
@@ -30,10 +30,10 @@ import java.util.List;
  *         #pagination {}
  *     </style>
  *     <table>
- *         <%-- æ•°æ®å±•ç¤º --%>
+ *         <%-- Êı¾İÕ¹Ê¾ --%>
  *     </table>
  *     <nav>
- *         <%-- é¡µç å¯¼èˆªæ  --%>
+ *         <%-- Ò³Âëµ¼º½À¸ --%>
  *         ${page.outputPageNav("/url", "pageno", true, true)}
  *     </nav>
  *
@@ -42,18 +42,18 @@ import java.util.List;
  */
 public class Paginator<T> {
 
-    // ä»ç”¨æˆ·å¤„è·å–çš„å‚æ•°
-    private int current = 1;   // å½“å‰é¡µç 
-    private int pageSize = 10; // æ¯é¡µæ•°ç›®
-    private int linkSize = 5;  // å¯¼èˆªæ é¡µç æ•°ç›®
+    // ´ÓÓÃ»§´¦»ñÈ¡µÄ²ÎÊı
+    private int current = 1;   // µ±Ç°Ò³Âë
+    private int pageSize = 10; // Ã¿Ò³ÊıÄ¿
+    private int linkSize = 5;  // µ¼º½À¸Ò³ÂëÊıÄ¿
 
-    // ä»æ•°æ®åº“æŸ¥è¯¢åˆ°çš„æ•°æ®
-    private int rowCount;      // è¡¨ç¤ºæ€»å…±æœ‰å¤šå°‘æ¡ï¼›
-    private List<T> data = new ArrayList<>();  // è·å–åˆ°çš„æ•°æ®
+    // ´ÓÊı¾İ¿â²éÑ¯µ½µÄÊı¾İ
+    private int rowCount;      // ±íÊ¾×Ü¹²ÓĞ¶àÉÙÌõ£»
+    private List<T> data = new ArrayList<>();  // »ñÈ¡µ½µÄÊı¾İ
 
-    // æ ¹æ®ä¸Šé¢è®¡ç®—å‡ºçš„æ•°æ®
-    private int pageCount;     // æ€»å…±æœ‰å¤šå°‘é¡µ
-    private List<Integer> links = new ArrayList<>();  // å¯¼èˆªæ¡è¦æ˜¾ç¤ºçš„é¡µç 
+    // ¸ù¾İÉÏÃæ¼ÆËã³öµÄÊı¾İ
+    private int pageCount;     // ×Ü¹²ÓĞ¶àÉÙÒ³
+    private List<Integer> links = new ArrayList<>();  // µ¼º½ÌõÒªÏÔÊ¾µÄÒ³Âë
 
 
 
@@ -101,7 +101,7 @@ public class Paginator<T> {
     public void setRowCount(int rowCount) {
         this.rowCount = rowCount;
         this.pageCount = (rowCount + pageSize - 1) / pageSize;
-        setLinks();
+        calcLinks();
     }
 
     public List<T> getData() {
@@ -120,22 +120,18 @@ public class Paginator<T> {
         return pageCount;
     }
 
-    public void setPageCount(int pageCount) {
-        this.pageCount = pageCount;
-    }
-
     public List<Integer> getLinks() {
         return links;
     }
 
     /**
-     * è®¡ç®—å¯¼èˆªæ è¦æ˜¾ç¤ºçš„é¡µç 
+     * ¼ÆËã/Ë¢ĞÂµ¼º½À¸ÒªÏÔÊ¾µÄÒ³Âë
      */
-    public void setLinks() {
-        // æ ¹æ®ä¸‹é¢æ¡ä»¶è®¡ç®—ï¼š
-        // 1. å½“å‰é¡µ current
-        // 2. æ€»é¡µæ•° pageCount
-        // 3. æ˜¾ç¤ºæ•°ç›® linkSize
+    public void calcLinks() {
+        // ¸ù¾İÏÂÃæÌõ¼ş¼ÆËã£º
+        // 1. µ±Ç°Ò³ current
+        // 2. ×ÜÒ³Êı pageCount
+        // 3. ÏÔÊ¾ÊıÄ¿ linkSize
         int halfLinkSize = this.linkSize/2;
         int startPage = Math.max(this.current - halfLinkSize, 1);
         int endPage = Math.min(this.current + halfLinkSize, this.pageCount);
@@ -153,19 +149,19 @@ public class Paginator<T> {
     }
 
     /**
-     * è¾“å‡ºå¯¼èˆªæ¡çš„ html
+     * Êä³öµ¼º½ÌõµÄ html
      *
-     * ç®€å•å°è£…ï¼Œå¯æ ¹æ®éœ€æ±‚è‡ªå·±å®šåˆ¶
+     * ¼òµ¥·â×°£¬¿É¸ù¾İĞèÇó×Ô¼º¶¨ÖÆ
      *
-     * @param url è¯·æ±‚è·¯å¾„
-     * @param pagenoParam è¡¨ç¤ºè¯·æ±‚ä¸­é¡µç çš„å­—æ®µåç§°
-     * @param isFirstLast æ˜¯å¦æ˜¾ç¤ºé¦–é¡µæœ«é¡µ
-     * @param isPrevNext  æ˜¯å¦æ˜¾ç¤ºä¸Šé¡µä¸‹é¡µ
-     * @return åˆ†é¡µçš„ html è¯­å¥
+     * @param url ÇëÇóÂ·¾¶
+     * @param pagenoParam ±íÊ¾ÇëÇóÖĞÒ³ÂëµÄ×Ö¶ÎÃû³Æ
+     * @param isFirstLast ÊÇ·ñÏÔÊ¾Ê×Ò³Ä©Ò³
+     * @param isPrevNext  ÊÇ·ñÏÔÊ¾ÉÏÒ³ÏÂÒ³
+     * @return ·ÖÒ³µÄ html Óï¾ä
      */
     public String outputPageNav(String url, String pagenoParam, boolean isFirstLast, boolean isPrevNext) {
 
-        String firstLabel = "é¦–é¡µ", lastLabel = "æœ«é¡µ", prevLabel = "Â«", nextLabel = "Â»";
+        String firstLabel = "Ê×Ò³", lastLabel = "Ä©Ò³", prevLabel = "?", nextLabel = "?";
 
         String normalLink = "  <li><a href='" + url + "?" + pagenoParam + "=%s'>%s</a></li>\n";
         String currentLink = "  <li><a href='#' class='current'>%s</a></li>\n";
@@ -173,16 +169,16 @@ public class Paginator<T> {
 
         StringBuilder output = new StringBuilder("<ul id='pagination'>\n");
 
-        // é¦–é¡µ
+        // Ê×Ò³
         if(isFirstLast) {
-            if(links.contains(1)) {
+            if(current == 1) {
                 output.append(String.format(readonlyLink, firstLabel));
             } else {
                 output.append(String.format(normalLink, 1, firstLabel));
             }
         }
 
-        // ä¸Šä¸€é¡µ
+        // ÉÏÒ»Ò³
         if(isPrevNext) {
             if(current < 2) {
                 output.append(String.format(readonlyLink, prevLabel));
@@ -191,7 +187,7 @@ public class Paginator<T> {
             }
         }
 
-        // ç¬¬ x é¡µ
+        // µÚ x Ò³
         for(Integer i : links) {
             if(current == i) {
                 output.append(String.format(currentLink, i));
@@ -200,7 +196,7 @@ public class Paginator<T> {
             }
         }
 
-        // ä¸‹ä¸€é¡µ
+        // ÏÂÒ»Ò³
         if(isPrevNext) {
             if(current >= pageCount) {
                 output.append(String.format(readonlyLink, nextLabel));
@@ -209,9 +205,9 @@ public class Paginator<T> {
             }
         }
 
-        // å°¾é¡µ
+        // Î²Ò³
         if(isFirstLast) {
-            if(links.contains(pageCount)) {
+            if(current == pageCount) {
                 output.append(String.format(readonlyLink, lastLabel));
             } else {
                 output.append(String.format(normalLink, pageCount, lastLabel));

@@ -16,24 +16,24 @@ public class PagingServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 1.è·å–ç”¨æˆ·ä¼ é€’è¿‡æ¥çš„å‚æ•°
-        String pagenoStr = req.getParameter("pageno");      // è·å–é¡µç 
-        int pageno = pagenoStr == null ? 1 : Integer.parseInt(pagenoStr);  // å¦‚æœé¡µç ä¸ºç©ºï¼Œèµ‹äºˆåˆå§‹å€¼ 1.
+        // 1.»ñÈ¡ÓÃ»§´«µİ¹ıÀ´µÄ²ÎÊı
+        String pagenoStr = req.getParameter("pageno");      // »ñÈ¡Ò³Âë
+        int pageno = pagenoStr == null ? 1 : Integer.parseInt(pagenoStr);  // Èç¹ûÒ³ÂëÎª¿Õ£¬¸³Óè³õÊ¼Öµ 1.
 
-        // 2. åˆ›å»ºåˆ†é¡µå¯¹è±¡ï¼Œå°†ç”¨æˆ·å‚æ•°ä¼ é€’ç»™å®ƒ
+        // 2. ´´½¨·ÖÒ³¶ÔÏó£¬½«ÓÃ»§²ÎÊı´«µİ¸øËü
         Paginator<Person> paginator = new Paginator<>(pageno, 9, 7);
 
-        // 3. æŸ¥è¯¢æ•°æ®åº“ï¼Œæ€»å…±å¤šå°‘æ¡
+        // 3. ²éÑ¯Êı¾İ¿â£¬×Ü¹²¶àÉÙÌõ
         PersonDAO personDAO = new PersonDAO();
         paginator.setRowCount(personDAO.getPersonCount());
 
-        // 4. æŸ¥è¯¢æ•°æ®åº“ï¼Œæ‰€éœ€è¦çš„æ•°æ®
+        // 4. ²éÑ¯Êı¾İ¿â£¬ËùĞèÒªµÄÊı¾İ
         paginator.setData(personDAO.findPersonsInRange(paginator.getOffset(), paginator.getPageSize()));
 
-        // 5. æ”¾åˆ° request é‡Œé¢
+        // 5. ·Åµ½ request ÀïÃæ
         req.setAttribute("pager", paginator);
 
-        // 6. è·³è½¬åˆ°é¡µç ï¼Œæ¸²æŸ“æ•°æ®
+        // 6. Ìø×ªµ½Ò³Âë£¬äÖÈ¾Êı¾İ
         req.getRequestDispatcher("pages/pagination/index.jsp").forward(req, resp);
 
     }

@@ -8,7 +8,7 @@ public class PersonDAO {
 
 
     /**
-     * æŸ¥è¯¢è®°å½•æ€»æ•°
+     * ²éÑ¯¼ÇÂ¼×ÜÊı
      */
     public int getPersonCount() {
         int count = 0;
@@ -20,7 +20,7 @@ public class PersonDAO {
             rs.next();
             count = rs.getInt(1);
         } catch (Exception e) {
-            // ä»€ä¹ˆæ˜¯è¿è¡Œæ—¶å¼‚å¸¸ï¼Ÿè·Ÿæ£€æŸ¥å¼‚å¸¸æœ‰ä»€ä¹ˆåŒºåˆ«ï¼Ÿ
+            // Ê²Ã´ÊÇÔËĞĞÊ±Òì³££¿¸ú¼ì²éÒì³£ÓĞÊ²Ã´Çø±ğ£¿
             throw new RuntimeException();
         }
 
@@ -29,10 +29,10 @@ public class PersonDAO {
 
 
     /**
-     * æŸ¥è¯¢åˆ†é¡µæ•°æ®
-     * @param offset ä»ç¬¬å‡ æ¡å¼€å§‹
-     * @param size å–å¤šå°‘æ¡
-     * @return æŸ¥è¯¢åˆ°çš„åˆ†é¡µæ•°æ®é›†åˆ
+     * ²éÑ¯·ÖÒ³Êı¾İ
+     * @param offset ´ÓµÚ¼¸Ìõ¿ªÊ¼
+     * @param size È¡¶àÉÙÌõ
+     * @return ²éÑ¯µ½µÄ·ÖÒ³Êı¾İ¼¯ºÏ
      */
     public List<Person> findPersonsInRange(int offset, int size) {
         ArrayList<Person> persons  = new ArrayList<>();

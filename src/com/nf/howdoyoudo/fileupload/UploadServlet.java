@@ -20,19 +20,19 @@ import java.util.List;
 
 
 /**
- * æ³¨è§£(Annotation)æ˜¯ç”¨æ¥è§£å†³ XML é…ç½®ä¸å¤Ÿçµæ´»çš„é—®é¢˜è€Œå‡ºç°çš„
- * ä¸€ä¸ª Servletï¼Œå¦‚æœåœ¨ web.xml ä¸­é…ç½®ï¼Œè‡³å°‘éœ€è¦é…ç½®ä¸¤ä¸ªèŠ‚ç‚¹ï¼š
+ * ×¢½â(Annotation)ÊÇÓÃÀ´½â¾ö XML ÅäÖÃ²»¹»Áé»îµÄÎÊÌâ¶ø³öÏÖµÄ
+ * Ò»¸ö Servlet£¬Èç¹ûÔÚ web.xml ÖĞÅäÖÃ£¬ÖÁÉÙĞèÒªÅäÖÃÁ½¸ö½Úµã£º
  * <code>
  *     <servlet></servlet>
  *     <servlet-mapping></servlet-mapping>
  * </code>
- * è¿™æ ·çš„é…ç½®ä»£ç ä¼šæ¯”è¾ƒå¤šï¼Œå†™å¾—æ¯”è¾ƒéº»çƒ¦ã€‚æ‰€ä»¥ servlet 2.5 ä¹‹åæ”¯æŒä½¿ç”¨æ³¨è§£
- * ç›´æ¥åœ¨è¦æ˜ å°„çš„ç±»ä¸Šç”¨ @WebServlet(æ˜ å°„è·¯å¾„) çš„æ–¹å¼ï¼Œä»£æ›¿ä¸Šé¢å¤æ‚çš„ xml é…ç½®
+ * ÕâÑùµÄÅäÖÃ´úÂë»á±È½Ï¶à£¬Ğ´µÃ±È½ÏÂé·³¡£ËùÒÔ servlet 2.5 Ö®ºóÖ§³ÖÊ¹ÓÃ×¢½â
+ * Ö±½ÓÔÚÒªÓ³ÉäµÄÀàÉÏÓÃ @WebServlet(Ó³ÉäÂ·¾¶) µÄ·½Ê½£¬´úÌæÉÏÃæ¸´ÔÓµÄ xml ÅäÖÃ
  *
- * æ›´ç®€å•ï¼Œæ›´ç›´è§‚ï¼Œæ›´é«˜æ•ˆï¼
- * (å½“ç„¶ï¼Œxml é…ç½®ä¹Ÿæœ‰è‡ªå·±çš„ä¼˜åŠ¿ï¼Œè¦è¾©è¯åœ°çœ‹é—®é¢˜ã€‚xml é…ç½®å®¹æ˜“é›†ä¸­ç®¡ç†ã€‚)
+ * ¸ü¼òµ¥£¬¸üÖ±¹Û£¬¸ü¸ßĞ§£¡
+ * (µ±È»£¬xml ÅäÖÃÒ²ÓĞ×Ô¼ºµÄÓÅÊÆ£¬Òª±çÖ¤µØ¿´ÎÊÌâ¡£xml ÅäÖÃÈİÒ×¼¯ÖĞ¹ÜÀí¡£)
  *
- * æ¯”å¦‚ï¼Œä¸‹é¢çš„è¿™ä¸ªæ³¨è§£ï¼Œç­‰ä»·çš„ xml é…ç½®ä¸ºï¼š
+ * ±ÈÈç£¬ÏÂÃæµÄÕâ¸ö×¢½â£¬µÈ¼ÛµÄ xml ÅäÖÃÎª£º
  * <code>
  *   <servlet>
  *       <servlet-name>uploadServlet</servlet-name>
@@ -44,58 +44,58 @@ import java.util.List;
  *   </servlet-mapping>
  * </code>
  *
- * è¿™æ ·åœ¨å®¢æˆ·ç«¯ï¼Œåªéœ€è¦è®¿é—® /upload å°±èƒ½è®¿é—®åˆ°è¿™ä¸ª Servlet äº†ã€‚
- * åŒæ ·çš„ï¼Œfilter å’Œ listener ä¹Ÿæœ‰ç›¸åº”çš„æ³¨è§£ï¼Œç°åœ¨çš„ web é¡¹ç›®ï¼Œweb.xml å¯ä»¥åˆ æ‰ä¸ç”¨äº†ã€‚
+ * ÕâÑùÔÚ¿Í»§¶Ë£¬Ö»ĞèÒª·ÃÎÊ /upload ¾ÍÄÜ·ÃÎÊµ½Õâ¸ö Servlet ÁË¡£
+ * Í¬ÑùµÄ£¬filter ºÍ listener Ò²ÓĞÏàÓ¦µÄ×¢½â£¬ÏÖÔÚµÄ web ÏîÄ¿£¬web.xml ¿ÉÒÔÉ¾µô²»ÓÃÁË¡£
  */
 
 @WebServlet("/upload")
-@MultipartConfig  // å¿…éœ€é¡¹ï¼ŒMultipartConfig ç”¨æ¥ä½¿å¾—æˆ‘ä»¬çš„ Servlet æ”¯æŒ multipart ç¼–ç çš„æ–‡ä»¶ä¸Šä¼ 
+@MultipartConfig  // ±ØĞèÏî£¬MultipartConfig ÓÃÀ´Ê¹µÃÎÒÃÇµÄ Servlet Ö§³Ö multipart ±àÂëµÄÎÄ¼şÉÏ´«
 public class UploadServlet extends HttpServlet {
 
 
     /**
-     * HTTP è§„èŒƒè§„å®šäº†å¾ˆå¤šè¯·æ±‚çš„ Methodï¼Œå¯¹åº”çš„æ˜¯ å¢-åˆ -æ”¹-æŸ¥
-     * ä½†åœ¨é¥è¿œçš„å¹´ä»£, web æŠ€æœ¯ä¸å‘è¾¾ï¼Œé‚£æ—¶å€™æµè§ˆå™¨çš„å®ç°æ”¯æŒçš„åªæœ‰ get/post ä¸¤ç§
-     * è¿™ä¸¤ç§è¯·æ±‚ä¹Ÿè¶³å¤Ÿå¤§å®¶å¿«ä¹ä½¿ç”¨äº†
+     * HTTP ¹æ·¶¹æ¶¨ÁËºÜ¶àÇëÇóµÄ Method£¬¶ÔÓ¦µÄÊÇ Ôö-É¾-¸Ä-²é
+     * µ«ÔÚÒ£Ô¶µÄÄê´ú, web ¼¼Êõ²»·¢´ï£¬ÄÇÊ±ºòä¯ÀÀÆ÷µÄÊµÏÖÖ§³ÖµÄÖ»ÓĞ get/post Á½ÖÖ
+     * ÕâÁ½ÖÖÇëÇóÒ²×ã¹»´ó¼Ò¿ìÀÖÊ¹ÓÃÁË
      *
-     * ä½†ç°åœ¨ï¼Œç½‘ç»œçˆ†å‘çš„æ—¶ä»£ï¼Œå…¶ä»–çš„å„ç§è¯·æ±‚çš„æ–¹æ³•ï¼Œè¢«äººä»¬é‡æ–°æŒ–æ˜å‡ºæ¥
+     * µ«ÏÖÔÚ£¬ÍøÂç±¬·¢µÄÊ±´ú£¬ÆäËûµÄ¸÷ÖÖÇëÇóµÄ·½·¨£¬±»ÈËÃÇÖØĞÂÍÚ¾ò³öÀ´
      *
-     * Servlet ä¸­ï¼Œé’ˆå¯¹æ¯ç§ä¸åŒçš„ request methodï¼Œéƒ½æä¾›äº†æƒ³å¯¹åº”çš„ do æ–¹æ³•
-     * æ¯”å¦‚ï¼Œå¦‚æœæµè§ˆå™¨é‡‡ç”¨çš„æ˜¯ get æ–¹æ³•è¯·æ±‚ï¼Œåœ¨ servlet ä¸­è°ƒç”¨çš„ä¼šæ˜¯å¯¹åº”çš„ doGet æ–¹æ³•
-     * æ¯”å¦‚ï¼Œå¦‚æœæµè§ˆå™¨é‡‡ç”¨çš„æ˜¯ post æ–¹æ³•è¯·æ±‚ï¼Œåœ¨ servlet ä¸­è°ƒç”¨çš„ä¼šæ˜¯å¯¹åº”çš„ doPost æ–¹æ³•
+     * Servlet ÖĞ£¬Õë¶ÔÃ¿ÖÖ²»Í¬µÄ request method£¬¶¼Ìá¹©ÁËÏë¶ÔÓ¦µÄ do ·½·¨
+     * ±ÈÈç£¬Èç¹ûä¯ÀÀÆ÷²ÉÓÃµÄÊÇ get ·½·¨ÇëÇó£¬ÔÚ servlet ÖĞµ÷ÓÃµÄ»áÊÇ¶ÔÓ¦µÄ doGet ·½·¨
+     * ±ÈÈç£¬Èç¹ûä¯ÀÀÆ÷²ÉÓÃµÄÊÇ post ·½·¨ÇëÇó£¬ÔÚ servlet ÖĞµ÷ÓÃµÄ»áÊÇ¶ÔÓ¦µÄ doPost ·½·¨
      *
-     * å®é™…è¿ç”¨ä¸­ï¼Œå°½é‡ä¸è¦å°†é€»è¾‘å†™åœ¨ service æ–¹æ³•é‡Œ
-     * ï¼ˆservice æ˜¯æ‰€æœ‰ doXxx æ–¹æ³•çš„å…¥å£ï¼Œå¦‚æœè¦†å†™äº† serviceï¼Œå°±ä¸ä¼šè°ƒç”¨ç›¸åº”çš„ doXxx æ–¹æ³•äº†ï¼‰
+     * Êµ¼ÊÔËÓÃÖĞ£¬¾¡Á¿²»Òª½«Âß¼­Ğ´ÔÚ service ·½·¨Àï
+     * £¨service ÊÇËùÓĞ doXxx ·½·¨µÄÈë¿Ú£¬Èç¹û¸²Ğ´ÁË service£¬¾Í²»»áµ÷ÓÃÏàÓ¦µÄ doXxx ·½·¨ÁË£©
      *
-     * è€Œæ˜¯ï¼Œåˆ†å·¥æ˜ç¡®ï¼Œè´£ä»»å•ä¸€ã€‚æ ¹æ®å®¢æˆ·ç«¯è¯·æ±‚çš„ methodï¼Œå†™é€»è¾‘åˆ°ç›¸åº”çš„ doXxx æ–¹æ³•
+     * ¶øÊÇ£¬·Ö¹¤Ã÷È·£¬ÔğÈÎµ¥Ò»¡£¸ù¾İ¿Í»§¶ËÇëÇóµÄ method£¬Ğ´Âß¼­µ½ÏàÓ¦µÄ doXxx ·½·¨
      *
-     * æˆ‘ä»¬è¦å…»æˆï¼Œè‰¯å¥½çš„ä¹ æƒ¯ã€‚
+     * ÎÒÃÇÒªÑø³É£¬Á¼ºÃµÄÏ°¹ß¡£
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            newage_advanced(req);  // è°ƒç”¨ç›¸åº”æ–¹æ³•ï¼Œä¿å­˜æ–‡ä»¶åˆ°ç¡¬ç›˜
-            req.setAttribute("upload_result", "æ­å–œæ‚¨ï¼Œä¸Šä¼ æˆåŠŸï¼");
+            newage_advanced(req);  // µ÷ÓÃÏàÓ¦·½·¨£¬±£´æÎÄ¼şµ½Ó²ÅÌ
+            req.setAttribute("upload_result", "¹§Ï²Äú£¬ÉÏ´«³É¹¦£¡");
         } catch (Exception ex) {
-            // å¦‚æœä¿å­˜å¤±è´¥ï¼Œè¿”å›å¤±è´¥æ¶ˆæ¯.
-            req.setAttribute("upload_result", "å¾ˆæŠ±æ­‰ï¼Œä¸Šä¼ å¤±è´¥ï¼");
+            // Èç¹û±£´æÊ§°Ü£¬·µ»ØÊ§°ÜÏûÏ¢.
+            req.setAttribute("upload_result", "ºÜ±§Ç¸£¬ÉÏ´«Ê§°Ü£¡");
         }
 
-        // è·³è½¬åˆ°ç»“æœé¡µé¢
+        // Ìø×ªµ½½á¹ûÒ³Ãæ
         req.getRequestDispatcher("pages/fileupload/result.jsp").forward(req, resp);
     }
 
     /**
-     * åˆ©ç”¨ MultiplePart 3.0 å…§å»ºçš„æ”¯æŒï¼Œè¿›è¡Œæ–‡ä»¶å¤„ç†
+     * ÀûÓÃ MultiplePart 3.0 ƒÈ½¨µÄÖ§³Ö£¬½øĞĞÎÄ¼ş´¦Àí
      */
     private void newage_advanced(HttpServletRequest request) throws Exception {
 
-        // 1. è·å–
+        // 1. »ñÈ¡
         Part part = request.getPart("pic");
 
-        // 2. æŸ¥çœ‹ part å¯¹è±¡
+        // 2. ²é¿´ part ¶ÔÏó
         System.out.printf(
-                ">> åŸºæœ¬æƒ…å†µï¼š\nName: %s\nSize: %d\nContentType: %s\nHeaderNames: %s\ngetSubmittedFileName: %s\ndisposition: %s\n",
+                ">> »ù±¾Çé¿ö£º\nName: %s\nSize: %d\nContentType: %s\nHeaderNames: %s\ngetSubmittedFileName: %s\ndisposition: %s\n",
                 part.getName(),
                 part.getSize(),
                 part.getContentType(),
@@ -103,43 +103,43 @@ public class UploadServlet extends HttpServlet {
                 // part.getSubmittedFileName(),
                 part.getHeader("content-disposition"));
 
-        // 3. è·å–æ–‡ä»¶è¦ä¿å­˜åˆ°çš„æ–‡ä»¶å¤¹ï¼Œè¿™é‡Œæ˜¯é¡¹ç›®ä¸‹çš„ upload æ–‡ä»¶å¤¹ã€‚
-        // å¦‚æœæ–‡ä»¶å¤¹ä¸å­˜åœ¨ï¼Œè¦å…ˆåˆ›å»º
+        // 3. »ñÈ¡ÎÄ¼şÒª±£´æµ½µÄÎÄ¼ş¼Ğ£¬ÕâÀïÊÇÏîÄ¿ÏÂµÄ upload ÎÄ¼ş¼Ğ¡£
+        // Èç¹ûÎÄ¼ş¼Ğ²»´æÔÚ£¬ÒªÏÈ´´½¨
         File destdir = new File(request.getServletContext().getRealPath("upload"));
         if (!destdir.exists()) destdir.mkdir();
 
-        // 4. è·å–çœŸå®çš„æ–‡ä»¶åã€‚3.1 ä¹‹åæœ‰ part.getSubmittedFileName() æ–¹æ³•å¯ä»¥ç›´æ¥è·å–ã€‚
-        // ä¹‹å‰çš„ç‰ˆæœ¬ï¼Œéœ€è¦ä» header ä¸­è·å–ï¼Œæ¯”å¦‚ï¼š
+        // 4. »ñÈ¡ÕæÊµµÄÎÄ¼şÃû¡£3.1 Ö®ºóÓĞ part.getSubmittedFileName() ·½·¨¿ÉÒÔÖ±½Ó»ñÈ¡¡£
+        // Ö®Ç°µÄ°æ±¾£¬ĞèÒª´Ó header ÖĞ»ñÈ¡£¬±ÈÈç£º
         String realfilename = part.getHeader("content-disposition").split("filename=")[1].replace("\"", "");
         //    String realfilename = part.getHeader("content-disposition").substring(part.getHeader("content-disposition").lastIndexOf("=") + 2, part.getHeader("content-disposition").lastIndexOf("\""));
         //    String realfilename = part.getSubmittedFileName();
 
-        // 5. æ„å»ºæœ€ç»ˆçš„ä¿å­˜è·¯å¾„
+        // 5. ¹¹½¨×îÖÕµÄ±£´æÂ·¾¶
         String fullSavePath = destdir + File.separator + System.currentTimeMillis() + "-" + realfilename;
 
-        // 6. ä¿å­˜ä¹‹
+        // 6. ±£´æÖ®
         part.write(fullSavePath);
     }
 
 
-    /* MultiplePart 3.0, å¤šæ–‡ä»¶ */
+    /* MultiplePart 3.0, ¶àÎÄ¼ş */
     private void newage_multiplefiles(HttpServletRequest request) throws IOException, ServletException {
         for (Part part : request.getParts()) {
-            // é€ä¸ªå¤„ç†
+            // Öğ¸ö´¦Àí
         }
     }
 
 
-    /* è®©æˆ‘ä»¬æºæ‰‹è¿›å…¥æ–°æ—¶ä»£, Servlet 3.0 å†…ç½®æ”¯æŒæ–‡ä»¶ä¸Šä¼  */
+    /* ÈÃÎÒÃÇĞ¯ÊÖ½øÈëĞÂÊ±´ú, Servlet 3.0 ÄÚÖÃÖ§³ÖÎÄ¼şÉÏ´« */
     private void newage_basic(HttpServletRequest request) throws IOException, ServletException {
-        // è·å–æ–‡ä»¶
+        // »ñÈ¡ÎÄ¼ş
         Part file = request.getPart("meinv");
-        // ä¿å­˜åˆ°ä½ç½®
+        // ±£´æµ½Î»ÖÃ
         file.write("E:\\meinv_bk222.jpg");
     }
 
 
-    /* è¿›å…¥æ±Ÿæ¹–å¤§ä½¬ Apache çš„æ—¶ä»£ï¼ŒCommons-Fileupload.jar åŒ…çš„ä½¿ç”¨ */
+    /* ½øÈë½­ºş´óÀĞ Apache µÄÊ±´ú£¬Commons-Fileupload.jar °üµÄÊ¹ÓÃ */
     private void apachestime(HttpServletRequest request) throws Exception {
         ServletFileUpload upload = new ServletFileUpload(new DiskFileItemFactory());
         List<FileItem> files = upload.parseRequest(request);
@@ -151,23 +151,23 @@ public class UploadServlet extends HttpServlet {
     }
 
 
-    /* å¾ˆä¹…å¾ˆä¹…ä»¥å‰ï¼Œéœ€è¦è‡ªå·±æ‰‹åŠ¨ä» InputStream ä¸­å¤„ç†æ•°æ® */
+    /* ºÜ¾ÃºÜ¾ÃÒÔÇ°£¬ĞèÒª×Ô¼ºÊÖ¶¯´Ó InputStream ÖĞ´¦ÀíÊı¾İ */
     private void longlongago(HttpServletRequest request) throws Exception {
 
-        // ä¿å­˜æ–‡ä»¶çš„è·¯å¾„
+        // ±£´æÎÄ¼şµÄÂ·¾¶
         File file = new File("E:\\saved-beauty.txt");
         FileOutputStream output = new FileOutputStream(file);
 
-        // å–å‡ºå®¢æˆ·ç«¯ä¼ æ¥çš„æ•°æ®
+        // È¡³ö¿Í»§¶Ë´«À´µÄÊı¾İ
         ServletInputStream input = request.getInputStream();
 
-        // è¯»å–æ•°æ®ï¼Œå†™å…¥æ–‡ä»¶
+        // ¶ÁÈ¡Êı¾İ£¬Ğ´ÈëÎÄ¼ş
         byte[] bytes = new byte[1024];
         while (input.read(bytes) != -1) {
             output.write(bytes);
         }
 
-        // é‡Šæ”¾èµ„æº
+        // ÊÍ·Å×ÊÔ´
         output.close();
         input.close();
     }

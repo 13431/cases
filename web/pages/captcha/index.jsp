@@ -73,8 +73,8 @@
         </label>
 
         <label>
-            <span><img id="verifycode" title="验证码" src="${pageContext.request.contextPath}/verifycode" /></span>
-            <input name="verifycode" placeholder="请输入验证码" />
+            <span><img id="verifycodeimg" title="验证码" src="${pageContext.request.contextPath}/verifycode" /></span>
+            <input id="verifycode" name="verifycode" placeholder="请输入验证码" />
         </label>
 
         <div>
@@ -85,7 +85,8 @@
 </form>
 
 <script>
-    document.getElementById("verifycode").onclick = function () {
+    document.getElementById("verifycodeimg").onclick = function () {
+        document.getElementById("verifycode").valueOf = "";
         this.src = this.src.split("?")[0] + "?" + Math.random();
     }
 </script>`

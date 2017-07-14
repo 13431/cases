@@ -10,12 +10,12 @@ public class DBHelper {
 
 
     /**
-     * é€šè¿‡ JDBC èŽ·å–æ•°æ®åº“è¿žæŽ¥
+     * Í¨¹ý JDBC »ñÈ¡Êý¾Ý¿âÁ¬½Ó
      *
-     * å¦‚æžœä¸çŸ¥é“ SQLServer ç«¯å£å·ï¼Œå¯ä»¥é€šè¿‡ä¸‹é¢è¯­å¥æŸ¥çœ‹ï¼š
+     * Èç¹û²»ÖªµÀ SQLServer ¶Ë¿ÚºÅ£¬¿ÉÒÔÍ¨¹ýÏÂÃæÓï¾ä²é¿´£º
      * -- exec sys.sp_readerrorlog 0, 1, 'listening'
      *
-     * @return SqlServer2008 çš„æ•°æ®åº“è¿žæŽ¥
+     * @return SqlServer2008 µÄÊý¾Ý¿âÁ¬½Ó
      */
     public static Connection getConn () throws Exception {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -24,13 +24,13 @@ public class DBHelper {
 
 
     /**
-     * èŽ·å–ä¸€ä¸ªéšæœºçš„ä¸­æ–‡åå­—
-     * @param isMale ç”·ç”Ÿåå­—è¿˜å¥³ç”Ÿåå­—ï¼Œå¦‚æžœä¸ºç©ºï¼Œé‚£ä¹ˆä¸åˆ†ç”·å¥³
+     * »ñÈ¡Ò»¸öËæ»úµÄÖÐÎÄÃû×Ö
+     * @param isMale ÄÐÉúÃû×Ö»¹Å®ÉúÃû×Ö£¬Èç¹ûÎª¿Õ£¬ÄÇÃ´²»·ÖÄÐÅ®
      */
     public static String getRandomName(boolean... isMale) {
-        char[] first = "çŽ‹æŽå¼ åˆ˜é™ˆæ¨é»„èµµå´å‘¨å¾å­™é©¬æœ±èƒ¡éƒ­ä½•é«˜æž—éƒ‘è°¢ç½—æ¢å®‹å”è®¸éŸ©å†¯é‚“æ›¹å½­æ›¾è§ç”°è‘£è¢æ½˜äºŽè’‹è”¡ä½™æœå¶ç¨‹è‹é­å•ä¸ä»»æ²ˆå§šå¢å§œå´”é’Ÿè°­é™†æ±ªèŒƒé‡‘çŸ³å»–è´¾å¤éŸ¦ä»˜æ–¹ç™½é‚¹å­Ÿç†Šç§¦é‚±æ±Ÿå°¹è–›é—«æ®µé›·ä¾¯é¾™å²é™¶é»Žè´ºé¡¾æ¯›éƒé¾šé‚µä¸‡é’±ä¸¥è¦ƒæ­¦æˆ´èŽ«å­”å‘æ±¤".toCharArray(), last = null;
-        String MSeed = "ä¸–èˆœä¸žä¸»äº§ä»ä»‡ä»“ä»•ä»žä»»ä¼‹ä¼—ä¼¸ä½ä½ºä¾ƒä¾ªä¿ƒä¿Ÿä¿¡ä¿£ä¿®å€å€¡å€§å¿å‚¨åƒ–åƒ§åƒ³å„’ä¿Šä¼Ÿåˆ—åˆ™åˆšåˆ›å‰å‰‘åŠ©åŠ­åŠ¿å‹˜å‚å”åå—£å£«å£®å­ºå®ˆå®½å®¾å®‹å®—å®™å®£å®žå®°å°Šå³™å³»å´‡å´ˆå·å·žå·¡å¸…åºšæˆ˜æ‰æ‰¿æ‹¯æ“æ–‹æ˜Œæ™æš æ›¹æ›¾çºçŽ®ç¹ç’ç›ç©ç®ç¸ç‘ŽçŽšç’Ÿç’¥ç‘œç”Ÿç•´çŸ—çŸ¢çŸ³ç£Šç ‚ç¢«ç¤ºç¤¾ç¥–ç¥šç¥¥ç¦…ç¨¹ç©†ç«£ç«¦ç»¼ç¼œç»ªèˆ±èˆ·èˆ¹èš©è¥¦è½¼è¾‘è½©å­æ°æ¦œç¢§è‘†èŽ±è’²å¤©ä¹ä¸œé’¢é“Žé“–é“ é“¸é“¿é”‹é•‡é”®é•°é¦—æ—­éªéª¢éª¥é©¹é©¾éª„è¯šè¯¤èµæ…•ç«¯å¾åšå»ºå¼“å¼ºå½¦å¾¡æ‚æ“Žæ”€æ—·æ˜‚æ™·å¥å†€å‡¯åŠ»å•¸æŸ´æœ¨æž—æ£®æœ´éªžå¯’å‡½é«˜é­é­é²›é²²é¹°ä¸•ä¹’å€™å†•å‹°å¤‡å®ªå®¾å¯†å°å±±å³°å¼¼å½ªå½­æ—æ—¥æ˜Žæ˜ªæ˜´èƒœæ±‰æ¶µæ±—æµ©æ¶›æ·æ¸…æ¾œæµ¦æ¾‰æ¾Žæ¾”æ¿®æ¿¯ç€šç€›çæ²§è™šè±ªè±¹è¾…è¾ˆè¿ˆé‚¶åˆéƒ¨é˜”é›„éœ†éœ‡éŸ©ä¿¯é¢é¢‡é¢‘é¢”é£Žé£’é£™é£šé©¬äº®ä»‘ä»ä»£å„‹åˆ©åŠ›åŠ¼å‹’å“å“²å–†å±•å¸å¼›å¼¢å¼©å½°å¾å¾‹å¾·å¿—å¿ æ€æŒ¯æŒºæŽ£æ—²æ—»æ˜Šæ˜®æ™‹æ™Ÿæ™¸æœ•æœ—æ®µæ®¿æ³°æ»•ç‚…ç‚œç…œç…Šç‚Žé€‰çŽ„å‹‡å›ç¨¼é»Žåˆ©è´¤è°Šé‡‘é‘«è¾‰å¢¨æ¬§æœ‰å‹é—»é—®";
-        String FSeed = "ç­ æŸ”ç«¹éœ­å‡æ™“æ¬¢éœ„æž«èŠ¸è²å¯’ä¼Šäºšå®œå¯å§¬èˆ’å½±è”æžæ€ä¸½ç§€å¨Ÿè‹±åŽæ…§å·§ç¾Žå¨œé™æ·‘æƒ ç ç¿ é›…èŠçŽ‰èçº¢å¨¥çŽ²èŠ¬èŠ³ç‡•å½©æ˜¥èŠå‹¤çè´žèŽ‰å…°å‡¤æ´æ¢…ç³ç´ äº‘èŽ²çœŸçŽ¯é›ªè£çˆ±å¦¹éœžé¦™æœˆèŽºåª›è‰³ç‘žå‡¡ä½³å˜‰ç¼æ¡‚å¨£å¶ç’§ç’å¨…ç¦æ™¶å¦èŒœç§‹çŠèŽŽé”¦é»›é’å€©å©·å§£å©‰å¨´ç‘¾é¢–éœ²ç‘¶æ€¡å©µé›è““çº¨ä»ªè·ä¸¹è“‰çœ‰å›ç´è•Šè–‡èæ¢¦å²šè‹‘å©•é¦¨ç‘—ç°éŸµèžå›­è‰ºå’å¿èªæ¾œçº¯æ¯“æ‚¦æ˜­å†°çˆ½ç¬èŒ—ç¾½å¸Œå®æ¬£é£˜è‚²æ»¢é¦¥";
+        char[] first = "ÍõÀîÕÅÁõ³ÂÑî»ÆÕÔÎâÖÜÐìËïÂíÖìºú¹ùºÎ¸ßÁÖÖ£Ð»ÂÞÁºËÎÌÆÐíº«·ëµË²ÜÅíÔøÏôÌï¶­Ô¬ÅËÓÚ½¯²ÌÓà¶ÅÒ¶³ÌËÕÎºÂÀ¶¡ÈÎÉòÒ¦Â¬½ª´ÞÖÓÌ·Â½Íô·¶½ðÊ¯ÁÎ¼ÖÏÄÎ¤¸¶·½°××ÞÃÏÐÜÇØÇñ½­ÒüÑ¦ãÆ¶ÎÀ×ºîÁúÊ·ÌÕÀèºØ¹ËÃ«ºÂ¹¨ÉÛÍòÇ®ÑÏñûÎä´÷Äª¿×ÏòÌÀ".toCharArray(), last = null;
+        String MSeed = "ÊÀË´Ø©Ö÷²úÈÊ³ð²ÖÊËØðÈÎ³ÖÚÉì×ôçÙ©Ù­´ÙÙ¹ÐÅÙ¶ÐÞ‚‰³«‚³¥´¢ÙÒÉ®ËÛÈå¿¡Î°ÁÐÔò¸Õ´´Ç°½£ÖúÛ¿ÊÆ¿±²ÎÊåÀôËÃÊ¿×³ÈæÊØ¿í±öËÎ×ÚÖæÐûÊµÔ××ðÖÅ¾þ³çƒ´¨ÖÝÑ²Ë§¸ýÕ½²Å³ÐÕü²ÙÕ«²ýêË•±²ÜÔø¬Bçâ¬A¬Sè¡¬dçý¬k¬€«`­Z­`è¤Éú³ë´£Ê¸Ê¯ÀÚÉ°´VÊ¾Éç×æìñÏéìøð¡ÄÂ¿¢ñµ×ÛçÇÐ÷²ÕÏÏ´¬ò¿ñàéø¼­Ðù×Ó½Ü°ñ±ÌÝáÀ³ÆÑÌìÀÖ¶«¸ÖîìîñîøÖýï¬·æÕò¼üÁ­Ø¸Ðñ¿¥æõæ÷¾Ô¼Ý½¾³ÏÚº´ÍÄ½¶ËÕ÷¼á½¨¹­Ç¿ÑåÓùº·ÇæÅÊ¿õ°ºêÐ½¡¼½¿­„ÁÐ¥²ñÄ¾ÁÖÉ­ÆÓå¹º®º¯¸ß¿ýÎºöÞöïÓ¥Ø§Æ¹ºòÃáÛÄ±¸ÏÜ±öÃÜ·âÉ½·ååö±ëÅíÅÔÈÕÃ÷•cêÄÊ¤ººº­º¹ºÆÌÎœBÇåÀ½ÆÖä÷Åì»å§åªå«å­å°²×ÐéºÀ±ª¸¨±²ÂõÚýºÏ²¿À«ÐÛöªÕðº«¸©°äÆÄÆµò¥·çìªì­ì®ÂíÁÁÂØÙÚ´úÙÙÀûÁ¦„ÂÀÕ×¿ÕÜ†´Õ¹µÛ³Ú|åóÕÃÕ÷ÂÉµÂÖ¾ÖÒË¼ÕñÍ¦³¸•@•Fê»•f½úêÉ•“ëÞÀÊ¶ÎµîÌ©ëøêÁì¿ìÏìÓÑ×Ñ¡ÐþÓÂ¾ý¼ÚÀèÀûÏÍÒê½ðöÎ»ÔÄ«Å·ÓÐÓÑÎÅÎÊ";
+        String FSeed = "óÞÈáÖñö°ÄýÏþ»¶Ïö·ãÜ¿·Æº®ÒÁÑÇÒË¿É¼§ÊæÓ°ÀóÖ¦Ë¼ÀöÐã¾êÓ¢»ª»ÛÇÉÃÀÄÈ¾²Êç»ÝÖé´äÑÅÖ¥ÓñÆ¼ºì¶ðÁá·Ò·¼Ñà²Ê´º¾ÕÇÚÕäÕêÀòÀ¼·ï½àÃ·ÁÕËØÔÆÁ«Õæ»·Ñ©ÈÙ°®ÃÃÏ¼ÏãÔÂÝºæÂÑÞÈð·²¼Ñ¼ÎÇí¹ðæ·Ò¶èµè´æ«çù¾§åûÜçÇïÉºÉ¯½õ÷ìÇàÙ»æÃæ¯ÍñæµèªÓ±Â¶Ñþâùæ¿ÑãÝíæýÒÇºÉµ¤ÈØÃ¼¾ýÇÙÈïÞ±Ý¼ÃÎá°Ô·æ¼Ü°è¥çüÔÏÈÚÔ°ÒÕÓ½Çä´ÏÀ½´¿Ø¹ÔÃÕÑ±ùË¬çþÜøÓðÏ£ÄþÐÀÆ®ÓýäÞð¥";
 
         if(isMale.length == 0) {
             last = (MSeed + FSeed).toCharArray();
@@ -50,14 +50,14 @@ public class DBHelper {
 
 
     /**
-     * æ‰¹é‡ç”Ÿæˆæµ‹è¯•æ•°æ®
+     * ÅúÁ¿Éú³É²âÊÔÊý¾Ý
      *
-     *  é¦–å…ˆï¼Œåˆ›å»ºæ•°æ®åº“
+     *  Ê×ÏÈ£¬´´½¨Êý¾Ý¿â
      *  -- create database pagination
-     *  å…¶æ¬¡ï¼Œåˆ›å»ºéœ€è¦çš„æµ‹è¯•è¡¨
+     *  Æä´Î£¬´´½¨ÐèÒªµÄ²âÊÔ±í
      *  -- create table person(id int primary key, name varchar(20) not null, weixin varchar(20));
      *
-     *  ç„¶åŽï¼Œæ‰§è¡Œä¸‹é¢æ–¹æ³•ï¼Œæ’å…¥æ•°æ®:
+     *  È»ºó£¬Ö´ÐÐÏÂÃæ·½·¨£¬²åÈëÊý¾Ý:
      *
      */
     public static void initData() {
@@ -74,20 +74,20 @@ public class DBHelper {
             e.printStackTrace();
         }
 
-        System.out.println("åˆå§‹åŒ–å®Œæˆã€‚");
+        System.out.println("³õÊ¼»¯Íê³É¡£");
     }
 
 
     /**
-     * å°†ä¸€ä¸ªæ™®é€šæŸ¥è¯¢è¯­å¥åŒ…è£…ä¸ºä¸€ä¸ªåˆ†é¡µæŸ¥è¯¢è¯­å¥
+     * ½«Ò»¸öÆÕÍ¨²éÑ¯Óï¾ä°ü×°ÎªÒ»¸ö·ÖÒ³²éÑ¯Óï¾ä
      *
-     * è¿™ä¸ªå¯ä»¥ç”¨äºŽ sqlserver2008
+     * Õâ¸ö¿ÉÒÔÓÃÓÚ sqlserver2008
      *
-     * @param sql åŽŸæ¥çš„è¯­å¥
-     * @param orderBy æŽ’åºçš„åˆ—
-     * @param offset ä»Žå“ªä¸€è¡Œå¼€å§‹
-     * @param size èŽ·å–å¤šå°‘æ¡
-     * @return åŒ…è£…è¿‡çš„è¯­å¥ï¼Œæ·»åŠ äº†åˆ†é¡µå‚æ•°
+     * @param sql Ô­À´µÄÓï¾ä
+     * @param orderBy ÅÅÐòµÄÁÐ
+     * @param offset ´ÓÄÄÒ»ÐÐ¿ªÊ¼
+     * @param size »ñÈ¡¶àÉÙÌõ
+     * @return °ü×°¹ýµÄÓï¾ä£¬Ìí¼ÓÁË·ÖÒ³²ÎÊý
      *
      */
     public static String pageLimitSQL(String sql, String orderBy, int offset, int size) {

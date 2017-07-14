@@ -2,25 +2,25 @@ package com.nf.howdoyoudo.pagination;
 
 
 /**
- * é¦–å…ˆï¼Œä¸€å¥è‡³ç†åè¨€ï¼šæœç´¢å¼•æ“Žæ˜¯ä½ ä»¬çš„å¥½æœ‹å‹ï¼
- * å…¶æ¬¡ï¼Œæœ‰ä¸€å¥è‡³ç†åè¨€ï¼šä¸Žå…¶åä»¥å¾…æ¯™ï¼Œä¸å¦‚è°·æ­Œç™¾åº¦ã€‚
+ * Ê×ÏÈ£¬Ò»¾äÖÁÀíÃûÑÔ£ºËÑË÷ÒýÇæÊÇÄãÃÇµÄºÃÅóÓÑ£¡
+ * Æä´Î£¬ÓÐÒ»¾äÖÁÀíÃûÑÔ£ºÓëÆä×øÒÔ´ý±Ð£¬²»Èç¹È¸è°Ù¶È¡£
  *
  *
- * æ­£é¢˜ï¼š
+ * ÕýÌâ£º
  *
- * å†™æµ‹è¯•æœ‰åŠ©äºŽå¸®åŠ©æˆ‘ä»¬ç†æ¸…æ€è·¯ï¼Œæ¶ˆé™¤é”™è¯¯
- * æ‰€ä»¥è¦å°½é‡å…»æˆéšæ‰‹å†™æµ‹è¯•æ–¹æ³•çš„ä¹ æƒ¯
+ * Ð´²âÊÔÓÐÖúÓÚ°ïÖúÎÒÃÇÀíÇåË¼Â·£¬Ïû³ý´íÎó
+ * ËùÒÔÒª¾¡Á¿Ñø³ÉËæÊÖÐ´²âÊÔ·½·¨µÄÏ°¹ß
  *
  *
- * å¯ä»¥ç”¨ç¬¬ä¸‰æ–¹çš„ä¸€äº›æ¡†æž¶ï¼Œå¦‚ junitï¼Œä¹Ÿå¯ä»¥ç®€å•ä½¿ç”¨ java çš„ assert æ–­è¨€
+ * ¿ÉÒÔÓÃµÚÈý·½µÄÒ»Ð©¿ò¼Ü£¬Èç junit£¬Ò²¿ÉÒÔ¼òµ¥Ê¹ÓÃ java µÄ assert ¶ÏÑÔ
  *
- * assert å¹¶ä¸æ˜¯é»˜è®¤å¼€å¯çš„ï¼Œå¦‚æžœæƒ³ç”Ÿæ•ˆï¼Œéœ€è¦åœ¨ java çš„å‚æ•°é‡Œå¢žåŠ  -eaï¼Œå³ -enableassertions
+ * assert ²¢²»ÊÇÄ¬ÈÏ¿ªÆôµÄ£¬Èç¹ûÏëÉúÐ§£¬ÐèÒªÔÚ java µÄ²ÎÊýÀïÔö¼Ó -ea£¬¼´ -enableassertions
  *
  */
 public class PaginatorTest {
 
     /**
-     * æ ¹æ®æ€»è®°å½•æ•°å’Œæ¯é¡µè®°å½•æ•°ï¼Œè®¡ç®—æ€»é¡µæ•°
+     * ¸ù¾Ý×Ü¼ÇÂ¼ÊýºÍÃ¿Ò³¼ÇÂ¼Êý£¬¼ÆËã×ÜÒ³Êý
      */
     public static int getPageCount(int rowCount, int pageSize) {
         // return (rowCount - 1)/pageSize + 1;
@@ -29,12 +29,12 @@ public class PaginatorTest {
     }
 
     /**
-     * ç¤ºä¾‹ï¼Œä¸º getPageCount å†™å¯¹åº”çš„æµ‹è¯•æ–¹æ³•ã€‚
+     * Ê¾Àý£¬Îª getPageCount Ð´¶ÔÓ¦µÄ²âÊÔ·½·¨¡£
      *
-     * æ€è·¯ä¸ºï¼š
-     * ã€å‡è®¾æ¯é¡µæ˜¾ç¤º 4 æ¡ï¼Œé‚£ä¹ˆæˆ‘ä»¬æœ‰ä¸‹é¢ç»“è®ºã€‘ï¼š
+     * Ë¼Â·Îª£º
+     * ¡¾¼ÙÉèÃ¿Ò³ÏÔÊ¾ 4 Ìõ£¬ÄÇÃ´ÎÒÃÇÓÐÏÂÃæ½áÂÛ¡¿£º
      *
-     * è®°å½•æ•° | æ€»é¡µæ•°
+     * ¼ÇÂ¼Êý | ×ÜÒ³Êý
      *    1     1
      *    2     1
      *    4     1
@@ -43,11 +43,11 @@ public class PaginatorTest {
      *    8     2
      *    9     3
      *
-     *  é‚£åªè¦ getPageCount() æ–¹æ³•èƒ½è®©ä¸Šé¢çš„æƒ…å†µéƒ½æ»¡è¶³ï¼Œæˆ‘ä»¬å°±å¯ä»¥è®¤ä¸ºæˆ‘ä»¬å†™å¯¹äº†ã€‚
+     *  ÄÇÖ»Òª getPageCount() ·½·¨ÄÜÈÃÉÏÃæµÄÇé¿ö¶¼Âú×ã£¬ÎÒÃÇ¾Í¿ÉÒÔÈÏÎªÎÒÃÇÐ´¶ÔÁË¡£
      *
-     *  æ‰€ä»¥ï¼Œå¦‚æžœæ€è·¯ä¸æ˜Žç¡®ï¼Œæˆ–è€…ä¸æ¸…æ¥šè‡ªå·±æœ‰æ²¡æœ‰è€ƒè™‘å‘¨å…¨ï¼Œé‚£å…ˆæŠŠæµ‹è¯•æ–¹æ³•å†™å‡ºæ¥ã€‚
+     *  ËùÒÔ£¬Èç¹ûË¼Â·²»Ã÷È·£¬»òÕß²»Çå³þ×Ô¼ºÓÐÃ»ÓÐ¿¼ÂÇÖÜÈ«£¬ÄÇÏÈ°Ñ²âÊÔ·½·¨Ð´³öÀ´¡£
      *
-     *  æˆ‘ä»¬å®žçŽ° getPageCount() çš„ç›®çš„ï¼Œå°±æ˜¯è®©ä¸‹é¢çš„æµ‹è¯•æ–¹æ³•èƒ½é€šè¿‡æ‰§è¡Œã€‚
+     *  ÎÒÃÇÊµÏÖ getPageCount() µÄÄ¿µÄ£¬¾ÍÊÇÈÃÏÂÃæµÄ²âÊÔ·½·¨ÄÜÍ¨¹ýÖ´ÐÐ¡£
      *
      */
     public static void testGetPageCount() {
