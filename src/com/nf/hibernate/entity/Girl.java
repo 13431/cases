@@ -10,16 +10,12 @@ import javax.persistence.TableGenerator;
 @Entity
 @GenericGenerator(name = "bbb", strategy = "uuid")
 public class Girl {
-
-
 //    @GeneratedValue(generator = "aaaaa2")
 //    @SequenceGenerator(name = "aaaaa2", sequenceName = "seq_girl", allocationSize = 1)
     @TableGenerator(name = "ccc", valueColumnName = "aaabbbccc", table = "kkk")
     @GeneratedValue(generator = "ccc")
     @Id
     private String id;
-
-    private long sssid;
 
     private String name;
     private String address;
