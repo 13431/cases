@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+    <class name="com.nf.hibernate.entity.Girl" table="girl">
+
+        <id name="id" column="gid" type="long">
+            <!--<generator class="assigned" />-->
+            <!--<generator class="native" />-->
+            <generator class="increment" />
+        </id>
+
+        <property name="name" column="girl_name" />
+        <property name="address" column="girl_addr" />
+    </class>
+
+</hibernate-mapping>
