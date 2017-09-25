@@ -1,25 +1,23 @@
-package com.nf.hibernate.assoc.many2one_oneway;
+package com.nf.hibernate.assoc.many2one_twoway;
 
 
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(name = "aaa", sequenceName = "seq_book", allocationSize = 1)
 public class Book {
+
     @Id
-    @GeneratedValue(generator = "aaa")
+    @GeneratedValue(generator = "bbb")
+    @SequenceGenerator(name = "bbb", sequenceName = "seq_book", allocationSize = 1)
     @Column(name = "bookid")
     private long id;
-
-    @Column(length = 50, nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private float price;
 
     @ManyToOne
     @JoinColumn(name = "authorid")
     private Author author;
+
 
     public long getId() {
         return id;
@@ -45,25 +43,20 @@ public class Book {
         this.price = price;
     }
 
-    public Book() {
-            }
-
-    public Book(String name, float price) {
-        this.name = name;
-        this.price = price;
-    }
-
-    public Book(String name, float price, Author author) {
-        this.name = name;
-        this.price = price;
-        this.author = author;
-    }
-
     public Author getAuthor() {
         return author;
     }
 
     public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Book() {
+    }
+
+    public Book(String name, float price, Author author) {
+        this.name = name;
+        this.price = price;
         this.author = author;
     }
 
@@ -73,7 +66,11 @@ public class Book {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", author=" + author +
                 '}';
+    }
+
+    @PrePersist
+    public void dododo () {
+        System.out.println("================-----------------=================");
     }
 }

@@ -49,4 +49,13 @@ public class Book {
         this.name = name;
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

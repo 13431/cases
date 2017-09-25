@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class OMTest {
+public class MOTest {
 
 
     @Test
@@ -21,15 +21,39 @@ public class OMTest {
 
         session.save(luxun);
 
-        Book book1 = new Book("呐喊", 12f);
-        Book book2 = new Book("彷徨", 11f);
-
-        book1.setAuthor(luxun);
-        book2.setAuthor(luxun);
+        Book book1 = new Book("呐喊", 12f, luxun);
+        Book book2 = new Book("彷徨", 11f, luxun);
 
         session.save(book1);
         session.save(book2);
 
+        session.save(new Book("故事新编", 22f, luxun));
+        session.save(new Book("野草集", 43f, luxun));
+    }
+
+
+    @Test
+    public void getAuthorBooks() {
+        initData();
+        session.flush();
+
+        Author author = session.get(Author.class, 1l);
+        System.out.println("作者是： " + author.getName());
+
+        List<Book> bookList = session.createQuery("from Book where author.id = :id")
+                .setLong("id", author.getId())
+                .list();
+
+        System.out.println("他的作品有：" + bookList);
+    }
+
+    @Test
+    public void getBookAuthor() {
+        initData();
+        session.flush();
+
+        Book book = session.get(Book.class, 3l);
+        System.out.println("《" + book.getName() + "》的作者是：" + book.getAuthor().getName() + ", 他的电话是：" + book.getAuthor().getPhone());
     }
 
     @Test
