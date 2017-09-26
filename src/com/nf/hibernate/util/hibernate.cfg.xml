@@ -11,14 +11,13 @@
         <property name="connection.password">vip</property>
         <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
 
-        <property name="hbm2ddl.auto">update</property>
+        <!--<property name="hbm2ddl.auto">create</property>-->
 
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-
-        <mapping class="com.nf.hibernate.assoc.many2one_twoway.Book" />
-        <mapping class="com.nf.hibernate.assoc.many2one_twoway.Author" />
+        <!--<mapping class="com.nf.hibernate.scottdemo.Employee" />-->
+        <mapping class="com.nf.hibernate.scottdemo.Department" />
 
     </session-factory>
 </hibernate-configuration>
