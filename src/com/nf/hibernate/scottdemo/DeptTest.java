@@ -25,6 +25,7 @@ public class DeptTest {
      2. 创建了实体类 Department
 
      3. 将实体类配置到 hibernate.cfg.xml
+        注意，将 hbm2ddl.auto 给注释掉
 
      4. 搞测试:
        首先，创建 sessionFactory
