@@ -1,5 +1,7 @@
-package com.nf.hibernate.scottdemo;
+package com.nf.hibernate.scottdemo.test;
 
+import com.nf.hibernate.scottdemo.Department;
+import com.nf.hibernate.scottdemo.Employee;
 import com.nf.hibernate.util.SessionUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -23,7 +25,45 @@ import java.util.List;
  */
 
 public class EmpTest {
-    
+
+    /**
+     * 指定上级
+     */
+    @Test
+    public void testAssignManager () {
+        Department sbb = session.get(Department.class, 80L);
+        Employee sj = session.get(Employee.class, 7934L);
+
+        for (Employee employee : sbb.getEmployees()) {
+            employee.setManager(sj);
+            session.saveOrUpdate(sj);
+        }
+
+    }
+
+    /* 查询 KING 的所有组员 */
+    @Test
+    public void testQueryKingsXiaoDi () {
+
+//        Employee king = (Employee) session.createQuery("from Employee where name = :name")
+//                .setParameter("name", "KING").uniqueResult();
+
+        Employee king = session.get(Employee.class, 7839L);
+
+        System.out.println("我是：" + king.getName());
+        System.out.println("我的小弟有：");
+
+        List<Employee> xiaodis = king.getXiaodis();
+
+        for (Employee xiaodi : xiaodis) {
+            System.out.printf("   >> 我是 %s, 我的部门是 %s, 我的小弟有 %d 个\n",
+                    xiaodi.getName(),
+                    xiaodi.getDepartment().getName(),
+                    xiaodi.getXiaodis().size());
+        }
+    }
+
+
     @Test
     public void testInsert() {
         Department d = new Department("随便部", "火星镇");
@@ -61,7 +101,7 @@ public class EmpTest {
             System.out.printf("   - 员工编号：%d, 员工名称：%s, 员工工资：%.2f元, 员工部门：%s\n",
                     employee.getEmpno(),
                     employee.getName(),
-                    employee.getSalary() + (employee.getCommission() == null ? 0 : employee.getCommission()),
+                    employee.getSalary() + employee.getCommission(),
                     employee.getDepartment().getName());
         }
     }

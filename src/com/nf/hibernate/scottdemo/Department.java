@@ -1,6 +1,9 @@
 package com.nf.hibernate.scottdemo;
 
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +23,8 @@ public class Department {
     @Column(name = "loc")
     private String location;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", fetch = FetchType.EAGER) // when
+    @Fetch(FetchMode.JOIN) // how
     private List<Employee> employees = new ArrayList<>();
 
     public Department() {

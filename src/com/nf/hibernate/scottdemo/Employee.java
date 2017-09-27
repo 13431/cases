@@ -1,18 +1,10 @@
 package com.nf.hibernate.scottdemo;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-
-/**
- * EMPNO    NUMBER(4)
- ENAME    VARCHAR2(10) Y
- JOB      VARCHAR2(9)  Y
- MGR      NUMBER(4)    Y
- HIREDATE DATE         Y
- SAL      NUMBER(7,2)  Y
- COMM     NUMBER(7,2)  Y
- */
 @Entity
 @Table(name = "emp")
 public class Employee {
@@ -40,6 +32,18 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "deptno")
     private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "mgr")
+    private Employee manager;
+
+    @OneToMany(mappedBy = "manager")
+    private List<Employee> xiaodis;
+
+
+    @ManyToMany(mappedBy = "workers")
+    private List<Project> projects = new ArrayList<>();
+
 
     public Employee() {
     }
@@ -86,6 +90,8 @@ public class Employee {
     }
 
     public Float getCommission() {
+        if(commission == null)
+            return Float.valueOf(0);
         return commission;
     }
 
@@ -107,6 +113,30 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public Employee getManager() {
+        return manager;
+    }
+
+    public void setManager(Employee manager) {
+        this.manager = manager;
+    }
+
+    public List<Employee> getXiaodis() {
+        return xiaodis;
+    }
+
+    public void setXiaodis(List<Employee> xiaodis) {
+        this.xiaodis = xiaodis;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
     @Override

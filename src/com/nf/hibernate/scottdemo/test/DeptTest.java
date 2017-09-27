@@ -1,5 +1,6 @@
-package com.nf.hibernate.scottdemo;
+package com.nf.hibernate.scottdemo.test;
 
+import com.nf.hibernate.scottdemo.Department;
 import com.nf.hibernate.util.SessionUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
