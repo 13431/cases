@@ -11,6 +11,9 @@ import java.util.List;
 
 public class DeptTest {
 
+    /**
+     * 插入数据
+     */
     @Test
     public void testNewDepartment () {
         session.save(new Department("北方IT", "黑龙江漠河"));
@@ -35,7 +38,7 @@ public class DeptTest {
 
      */
     @Test
-    public void firstTest () {
+    public void testQuery () {
 
         String hql = "from Department ";
         List<Department> departments = session.createQuery(hql).list();

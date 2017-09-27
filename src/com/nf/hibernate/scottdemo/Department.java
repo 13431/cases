@@ -2,6 +2,8 @@ package com.nf.hibernate.scottdemo;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "dept")
@@ -17,6 +19,9 @@ public class Department {
 
     @Column(name = "loc")
     private String location;
+
+    @OneToMany(mappedBy = "department")
+    private List<Employee> employees = new ArrayList<>();
 
     public Department() {
     }
@@ -48,6 +53,14 @@ public class Department {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     @Override

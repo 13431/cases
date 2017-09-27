@@ -18,6 +18,7 @@
 
         <!--<mapping class="com.nf.hibernate.scottdemo.Employee" />-->
         <mapping class="com.nf.hibernate.scottdemo.Department" />
+        <mapping class="com.nf.hibernate.scottdemo.Employee" />
 
     </session-factory>
 </hibernate-configuration>
