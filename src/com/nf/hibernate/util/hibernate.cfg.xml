@@ -11,13 +11,16 @@
         <property name="connection.password">vip</property>
         <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
 
-        <property name="hbm2ddl.auto">create</property>
+        <!--<property name="hbm2ddl.auto">create</property>-->
 
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <!--<mapping class="com.nf.hibernate.scottdemo.Employee" />-->
-        <mapping class="com.nf.hibernate.assoc.embed.Girl" />
+        <mapping class="com.nf.hibernate.strategy.entity.Company" />
+        <mapping class="com.nf.hibernate.strategy.entity.Author" />
+        <mapping class="com.nf.hibernate.strategy.entity.Book" />
+        <mapping class="com.nf.hibernate.strategy.entity.Game" />
+        <mapping class="com.nf.hibernate.strategy.entity.Chapter" />
 
     </session-factory>
 </hibernate-configuration>
